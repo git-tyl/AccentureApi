@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get All Users gets all users returns correct data 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "name": "Jay",
+    "title": "Manager",
+  },
+  Object {
+    "id": 2,
+    "name": "Jill",
+    "title": "Employee",
+  },
+  Object {
+    "id": 3,
+    "name": "Sam",
+    "title": "Employee",
+  },
+  Object {
+    "id": 4,
+    "name": "Jane",
+    "title": "Employee",
+  },
+]
+`;

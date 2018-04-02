@@ -1,17 +1,31 @@
+import axios from 'axios';
+
 const API_STEM = "https://private-fd094-accentureapi1.apiary-mock.com";
 const LIST_NAME = "users"
 
+
+//takes in a list name that gives a list of the type of group
+//returns a response object with status , JSON etc..
 function fetchUsers(list_name = LIST_NAME) {
   let url = `${API_STEM}/${LIST_NAME}`;
 
-  return fetch(url)
-    .then(response => {      
-      return response.json()
+  // return fetch(url)
+  //   .then(response =>
+  //     response.json()
+  //   )
+  //   .then(responseJson => {
+  //     return responseJson;
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //   });
+
+  return axios.get(url)
+    .then(response => {
+      // console.log(response)
+        return response
       }
     )
-    .then(responseJson => {
-      return responseJson;
-    })
     .catch(error => {
       console.error(error);
     });

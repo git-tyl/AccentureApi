@@ -48,7 +48,8 @@ class UserList extends Component {
 
   _refreshData = () => {
     UserAPI.fetchUsers().then(responseJson => {
-      this.setState({ data: this._addKeysToUsers(responseJson.results) });
+      
+      this.setState({ data: this._addKeysToUsers(responseJson.data.results) });
     });
   };
 

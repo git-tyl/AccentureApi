@@ -17,38 +17,24 @@ it('renders without crashing', () => {
 
 //REST TESTS
 
-test('gets all users', async () => {
-  let data;
-  try {
-   data = await UserAPI.fetchUsers();
-    console.log("---------------data--------------");
-    console.log(data);
-    // UserAPI.fetchUsers().then(responseJson => {
-    //   console.log(responseJson);
-    //   });
-    // });
+describe('Get All Users',() => {
 
-    UserAPI.fetchUsers()
-    .then(responseJson => {
-      console.log("----------responseJson-------------------");
-      console.log(responseJson);
-      return responseJson.json()
-    })
-    .then(response => {
-      console.log("----------response-------------------");
-      console.log(response);
-      return response;
-    })
+  let response;
 
-    expect(fetchUsers()).resolves.toBe("Jay");
+  beforeAll(async () => {
+    response = await UserAPI.fetchUsers();
+  });
 
-    // expect(fetchUsers()).resolves).toBe()
-    UserAPI.fetchUsers().then(users => expect(users).toBe(true));
-    // return expect(fetchUsers()).resolves.toBe(....)
+  test('gets all users return 200', () => {
+    // let response = await UserAPI.fetchUsers();
+    expect(response.status).toBe(200);
+  });
 
-  } catch(e) {
-    // expect(e.response.data.error).toMatchSnapshot();
-  }
+  test('gets all users returns correct data', () => {
+
+    console.log(response.data.results);
+    expect(response.data.results).toMatchSnapshot();
+  });
 });
 
 //POST test positive
