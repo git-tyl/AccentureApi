@@ -1,0 +1,143 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# AccentureAPI
+This is an example API for accenture
+It retrieves a list of users
+
+## User [/user{id}]
+A single user object, it represents a user in the system.
+
+Required attributes: 
+
+- `id`          Automatically assigned
+- `name` Name of user 
+- `title` Title of the user's job
+
+## Users resource [/users/{id}]
+### Retrieve a Single User [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Joe",
+                "title": "Manager"
+            }
+        ]
+    
++ Response 404 (application/json)
+
+        { 
+            "error": "Resource not found" 
+        }
+
+
+### Edit a User [PATCH]
+
++ Request (application/json)
+
+        {
+            "description": "A collection of health related projects",
+        }
+
++ Response 200
+
+        [
+            "result": True
+        ]
+
+
++ Response 404
+
+        { 
+            "error": "Resource not found"
+        }
+
++ Response 400
+
+        { 
+            "error": "Resource modification failed"
+        }
+
+### Delete a User [DELETE]
+
++ Request (application/json)
+
+        {
+            "user_id": 1
+        }
+        
++ Response 201
+    
+            { 
+                "result": True
+            }
+        
++ Response 200
+
+        { 
+            "result": True
+        }
+
++ Response 404
+
+        { 
+            "error": "Resource not found"
+        }
+        
+
+
+## Users Collection [/users]
+
+### List All Users [GET]
+
++ Response 200 (application/json)
+        
+        {
+            
+            "results":[
+                {
+                    "id":1,
+                    "name": "Jay",
+                    "title": "Manager"
+                }, {
+                    "id":2,
+                    "name": "Jill",
+                    "title": "Employee"
+                }, {
+                    "id":3,
+                    "name": "Sam",
+                    "title": "Employee"
+                }, {
+                    "id":4,
+                    "name": "Jane",
+                    "title": "Employee"
+                }
+            ]
+            
+                
+            
+        }
+
+## Create a User [POST]
+
++ Request (application/json)
+
+        {
+            "name": "Jay",
+            "title": "CEO",
+        }
+
++ Response 201
+        
+        { 
+            "result": True
+        }
+
++ Response 400
+
+        { 
+            "error": "Resource modification failed"
+        }
